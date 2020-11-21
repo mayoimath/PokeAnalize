@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,17 +14,10 @@ namespace CommonModels
 	public class Party
 	{
 		public int Id { get; set; }
-		[Required]
-		public Pokemon Pokemon1 { get; set; }
-		[Required]
-		public Pokemon Pokemon2 { get; set; }
-		[Required]
-		public Pokemon Pokemon3 { get; set; }
-		[Required]
-		public Pokemon Pokemon4 { get; set; }
-		[Required]
-		public Pokemon Pokemon5 { get; set; }
-		[Required]
-		public Pokemon Pokemon6 { get; set; }
+
+		// リレーションシップ
+		public List<PokemonBattle> PokemonBattles { get; set; }
+
+		public List<Battle> Battles { get; set; }
 	}
 }

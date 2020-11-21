@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -29,8 +30,9 @@ namespace CommonModels
 		Steel,
 		Fairy,
 	}
+
 	/// <summary>
-	/// ポケモンモデル
+	/// ポケモンエンティティ
 	/// </summary>
 	public class Pokemon
 	{
@@ -60,5 +62,10 @@ namespace CommonModels
 		public int? SpDef { get; set; }
 		[Column(TypeName ="tinyint")]
 		public int? Speed { get; set; }
+
+		// リレーションシップ
+		public List<PokemonParty> PokemonParties { get; set; }
+
+		public List<PokemonBattle> PokemonBattles { get; set; }
 	}
 }

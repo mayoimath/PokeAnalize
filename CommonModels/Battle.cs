@@ -17,22 +17,12 @@ namespace CommonModels
 		// 順位
 		public int? Ranking { get; set; }
 		// 自分パーティ
-		[Required]
+		public int MyPartyId { get; set; }
+		[ForeignKey(nameof(MyPartyId))]
 		public Party MyParty { get; set; }
 		// 相手パーティ
-		[Required]
-		public Pokemon Pokemon1 { get; set; }
-		[Required]
-		public Pokemon Pokemon2 { get; set; }
-		[Required]
-		public Pokemon Pokemon3 { get; set; }
-		[Required]
-		public Pokemon Pokemon4 { get; set; }
-		[Required]
-		public Pokemon Pokemon5 { get; set; }
-		[Required]
-		public Pokemon Pokemon6 { get; set; }
-		// 選出		
+		public List<PokemonBattle> PokemonBattles { get; set; }
+		// 選出
 		public int MyFirstElection { get; set; }
 		public int MySecondElection { get; set; }
 		public int MyThirdElection { get; set; }

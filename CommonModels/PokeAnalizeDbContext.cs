@@ -1,31 +1,55 @@
-﻿namespace CommonModels
-{
-	using System;
-	using System.Data.Entity;
-	using System.Linq;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using System.Configuration;
 
+namespace CommonModels
+{
 	public class PokeAnalizeDbContext : DbContext
 	{
-		// コンテキストは、アプリケーションの構成ファイル (App.config または Web.config) から 'Model1' 
-		// 接続文字列を使用するように構成されています。既定では、この接続文字列は LocalDb インスタンス上
-		// の 'CommonModels.Model1' データベースを対象としています。 
-		// 
-		// 別のデータベースとデータベース プロバイダーまたはそのいずれかを対象とする場合は、
-		// アプリケーション構成ファイルで 'Model1' 接続文字列を変更してください。
-		public PokeAnalizeDbContext()
-				: base("name=Database")
+
+		public virtual DbSet<Battle> Battles { get; set; }
+		public virtual DbSet<Party> Parties { get; set; }
+		public virtual DbSet<Pokemon> Pokemons { get; set; }
+
+		protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 		{
+			//optionsBuilder.UseSqlServer(ConfigurationManager.ConnectionStrings["Database"].ConnectionString);
+			optionsBuilder.UseSqlServer(@"Data Source=(LocalDB)\MSSQLLocalDB;Database=PokeAnalize;Integrated Security=True;Connect Timeout=30");
 		}
 
-		// モデルに含めるエンティティ型ごとに DbSet を追加します。Code First モデルの構成および使用の
-		// 詳細については、http://go.microsoft.com/fwlink/?LinkId=390109 を参照してください。
+		protected override void OnModelCreating(ModelBuilder modelBuilder)
+		{
+			//modelBuilder.Entity<Pokemon>(p =>
+			//	{
+			//		p.HasOne("CommonModel.Battle", "Battles")
+			//		.WithMany("EnemysPokemons")
+			//		.HasForeignKey("BattleId");
 
-		// public virtual DbSet<MyEntity> MyEntities { get; set; }
+			//		p.HasOne("CommonModel.Party", "Parties")
+			//		.WithMany("Pokemons")
+			//		.HasForeignKey("PartyId");
+			//	});
+
+			//modelBuilder.Entity<Party>(p =>
+			// {
+			//	 p.HasOne("CommonModel.Pokemon", "Pokemons")
+			//	 .WithMany("Parties")
+			//	 .HasForeignKey("PokemonId");
+
+			//	 p.HasOne("CommonModel.Battle", "Battle")
+			//	 .WithOne("Party");
+			// });
+
+			//modelBuilder.Entity<Battle>(b =>
+			//{
+			//	b.HasOne("CommonModel.Party", "MyParty")
+			//	.WithOne("Battle")
+			//	.HasForeignKey("MyPartyId");
+
+			//	b.HasOne("CommonModel.Pokemon", "EnemysPokemons")
+			//	.WithMany("Battles")
+			//	.HasForeignKey("EnemysPokemonId");
+			//});
+		}
 	}
-
-	//public class MyEntity
-	//{
-	//    public int Id { get; set; }
-	//    public string Name { get; set; }
-	//}
 }
