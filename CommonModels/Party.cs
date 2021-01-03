@@ -16,7 +16,7 @@ namespace CommonModels
 		public int Id { get; set; }
 
 		// リレーションシップ
-		public List<PokemonBattle> PokemonBattles { get; set; }
+		public List<PokemonParty> PokemonParties { get; set; }
 
 		public List<Battle> Battles { get; set; }
 	}

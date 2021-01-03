@@ -1,23 +1,29 @@
-﻿using PokeAnalize.Views;
+﻿using BattleAnalisys;
+using PokeAnalize.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using System.Windows;
 
 namespace PokeAnalize
 {
-    /// <summary>
-    /// Interaction logic for App.xaml
-    /// </summary>
-    public partial class App
-    {
-        protected override Window CreateShell()
-        {
-            return Container.Resolve<MainWindow>();
-        }
+	/// <summary>
+	/// Interaction logic for App.xaml
+	/// </summary>
+	public partial class App
+	{
+		protected override Window CreateShell()
+		{
+			return Container.Resolve<MainWindow>();
+		}
 
-        protected override void RegisterTypes(IContainerRegistry containerRegistry)
-        {
+		protected override void RegisterTypes(IContainerRegistry containerRegistry)
+		{
 
-        }
-    }
+		}
+
+		protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+		{
+			moduleCatalog.AddModule<BattleAnalisysModule>(InitializationMode.WhenAvailable);
+		}
+	}
 }

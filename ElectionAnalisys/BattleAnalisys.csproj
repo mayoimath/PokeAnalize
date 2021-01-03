@@ -7,8 +7,8 @@
     <ProjectGuid>{BC64F666-05FF-478E-A6BB-90618F1AA544}</ProjectGuid>
     <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ElectionAnalisys</RootNamespace>
-    <AssemblyName>ElectionAnalisys</AssemblyName>
+    <RootNamespace>BattleAnalisys</RootNamespace>
+    <AssemblyName>BattleAnalisys</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -49,7 +49,7 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ElectionAnalisysModule.cs" />
+    <Compile Include="BattleAnalisysModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -64,8 +64,9 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
     <Compile Include="ViewModels\BattleAnalisysViewModel.cs" />
-    <Compile Include="Views\BattleAnalisysView.xaml.cs">
-      <DependentUpon>BattleAnalisysView.xaml</DependentUpon>
+    <Compile Include="ViewModels\BattleHistoryViewModel.cs" />
+    <Compile Include="Views\BattleAnalisys.xaml.cs">
+      <DependentUpon>BattleAnalisys.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -78,13 +79,33 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="Views\BattleAnalisysView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
+    <PackageReference Include="Microsoft.EntityFrameworkCore">
+      <Version>3.1.9</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Core">
+      <Version>8.0.0.1909</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Unity">
+      <Version>8.0.0.1909</Version>
+    </PackageReference>
+    <PackageReference Include="Prism.Wpf">
+      <Version>8.0.0.1909</Version>
+    </PackageReference>
+    <PackageReference Include="ReactiveProperty">
+      <Version>7.5.1</Version>
+    </PackageReference>
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="Prism.Wpf" Version="7.2.0.1422" />
+    <ProjectReference Include="..\CommonModels\CommonModels.csproj">
+      <Project>{1440f05c-1d0e-4b8a-bdd2-57f9c9d97d9f}</Project>
+      <Name>CommonModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Views\BattleAnalisys.xaml">
+      <SubType>Designer</SubType>
+      <Generator>XamlIntelliSenseFileGenerator</Generator>
+    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

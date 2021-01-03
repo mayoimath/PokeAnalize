@@ -1,23 +1,23 @@
-﻿using ElectionAnalisys.Views;
+﻿using BattleAnalisys.Views;
 using Prism.Ioc;
 using Prism.Modularity;
 using Prism.Regions;
 
-namespace ElectionAnalisys
+namespace BattleAnalisys
 {
 	/// <summary>
 	/// 選出分析
 	/// </summary>
-	public class ElectionAnalisysModule : IModule
+	public class BattleAnalisysModule : IModule
 	{
 		public void OnInitialized(IContainerProvider containerProvider)
 		{
-
+			var regiMan = containerProvider.Resolve<IRegionManager>();
+			regiMan.RegisterViewWithRegion("BattleAnalisys", typeof(Views.BattleAnalisys));
 		}
 
 		public void RegisterTypes(IContainerRegistry containerRegistry)
 		{
-
 		}
 	}
 }
